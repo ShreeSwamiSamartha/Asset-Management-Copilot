@@ -1,71 +1,63 @@
-Asset Management Copilot
+# Asset Management Copilot
 
-AI-powered investment research assistant that enables natural language exploration of mutual fund factsheets and financial documents.
+AI-powered investment research assistant that enables natural language exploration of mutual fund factsheets and financial documents using Retrieval-Augmented Generation (RAG).
 
-The project demonstrates how Retrieval-Augmented Generation (RAG) can be applied to asset management workflows to reduce manual document analysis and accelerate investment research.
+---
 
-Problem Statement
+## Overview
 
-Investment analysts and wealth managers often need to review large volumes of fund factsheets, portfolio disclosures, and performance reports.
+Asset Management Copilot transforms fund factsheets into a searchable knowledge base, allowing users to ask natural language questions instead of manually reviewing multiple documents.
 
-Traditional document review is:
+### Example Questions
 
-Time-consuming
-Repetitive
-Difficult to scale
-Dependent on manual search
+* What is the investment objective of this fund?
+* Compare ICICI Prudential and Nippon funds.
+* Which fund has higher equity exposure?
+* Summarize the key characteristics of this portfolio.
 
-This project converts financial documents into a searchable knowledge base and enables users to ask natural language questions about fund performance, holdings, investment objectives, and portfolio characteristics.
+---
 
-Key Capabilities
-Document Ingestion
-Load fund factsheets and research documents
-Extract textual content
-Prepare documents for downstream processing
-Document Chunking
-Split documents into semantic chunks
-Preserve context for retrieval
-Optimize chunk size for LLM consumption
-Vector Search
-Convert chunks into embeddings
-Store embeddings in a vector database
-Retrieve relevant context using semantic similarity
-Question Answering
+## Architecture
 
-Examples:
-
-Which fund has the highest exposure to large-cap equities?
-Compare ICICI Prudential and Nippon funds.
-What is the investment objective of this fund?
-Summarize key portfolio characteristics.
-Current Architecture
+```text
 PDF Documents
       │
       ▼
 Document Ingestion
       │
       ▼
-Chunking
+Document Chunking
       │
       ▼
 Embeddings
       │
       ▼
-Vector Store (ChromaDB)
+ChromaDB Vector Store
       │
       ▼
 Semantic Retrieval
       │
       ▼
-LLM Response Generation
-Technology Stack
-Component	Technology
-Language	Python
-Vector Database	ChromaDB
-Document Processing	Python PDF Libraries
-Retrieval	Semantic Search
-AI Pattern	Retrieval-Augmented Generation (RAG)
-Repository Structure
+LLM Response
+```
+
+---
+
+## Technology Stack
+
+| Component       | Technology                           |
+| --------------- | ------------------------------------ |
+| Language        | Python                               |
+| Vector Database | ChromaDB                             |
+| Retrieval       | Semantic Search                      |
+| AI Pattern      | Retrieval-Augmented Generation (RAG) |
+| Documents       | Mutual Fund Factsheets               |
+
+---
+
+## Project Structure
+
+```text
 asset-management-copilot/
 │
 ├── app.py
@@ -78,53 +70,70 @@ asset-management-copilot/
 │
 ├── data/
 └── chroma_db/
-Sample Workflow
-Step 1
+```
 
-Place mutual fund factsheets inside:
+---
 
-data/
-Step 2
+## Setup
 
-Run ingestion:
+### Install Dependencies
 
+```bash
+pip install -r requirements.txt
+```
+
+### Run Ingestion
+
+```bash
 python ingest.py
-Step 3
+```
 
-Generate embeddings:
+### Generate Embeddings
 
+```bash
 python embed_documents.py
-Step 4
+```
 
-Query the knowledge base:
+### Query Documents
 
+```bash
 python query_documents.py
-Current Limitations
-Limited document set
-Single-user workflow
-No portfolio analytics layer
-No evaluation framework for answer quality
-Planned Enhancements
-Near-Term
-Hugging Face embedding integration
-Better retrieval ranking
-Improved chunking strategy
-Metadata filtering
-Medium-Term
-Portfolio comparison engine
-Fund screening assistant
-Performance analytics module
-Streamlit web interface
-Long-Term
-Multi-agent financial research workflows
-Automated fund due diligence
-Enterprise knowledge management integration
-Business Use Cases
-Asset Management
-Wealth Management
-Investment Research
-Financial Advisory
-Mutual Fund Analysis
-Future Roadmap
+```
 
-This repository is evolving toward a domain-specific Financial Copilot capable of supporting research, comparison, summarization, and knowledge discovery across investment products.
+---
+
+## Current Features
+
+* PDF document ingestion
+* Document chunking
+* Semantic retrieval
+* ChromaDB vector storage
+* Financial document search
+* Question answering workflow
+
+---
+
+## Planned Enhancements
+
+* Hugging Face embedding integration
+* Advanced retrieval ranking
+* Streamlit UI
+* Portfolio comparison engine
+* Financial analytics dashboard
+* Multi-document research workflows
+
+---
+
+## Business Use Cases
+
+* Asset Management
+* Wealth Management
+* Investment Research
+* Mutual Fund Analysis
+* Financial Advisory
+
+---
+
+## Status
+
+Active development project focused on applying Generative AI and RAG techniques to investment research workflows.
